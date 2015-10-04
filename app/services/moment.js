@@ -1,24 +1,24 @@
 import Ember from 'ember';
 import moment from 'moment';
 
-const { computed, defineProperty } = Ember;
+const { computed } = Ember;
 
 export default Ember.Service.extend({
-  init() {
-    this._super(...arguments);
+  _locale: null,
 
-    let locale = null;
+  locale: computed({
+    get() {
+      return this.get('_locale');
+    },
+    set(propertyKey, locale) {
+      moment.locale(locale);
+      this.set('_locale', locale);
+      return locale;
+    }
+  }),
 
-    defineProperty(this, 'locale', computed({
-      get() {
-        return locale;
-      },
-      set(property, key) {
-        locale = key;
-        moment.locale(key);
-        return key;
-      }
-    }));
+  changeLocale(locale) {
+    this.set('locale', locale);
   },
 
   moment() {
