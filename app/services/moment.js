@@ -40,6 +40,18 @@ export default Ember.Service.extend({
   },
 
   moment() {
-    return moment(...arguments);
+    let time = moment(...arguments);
+    let locale = this.get('locale');
+    let timeZone = this.get('timeZone');
+
+    if (locale) {
+      time = time.locale(locale);
+    }
+
+    if (timeZone && time.tz) {
+      time = time.tz(timeZone);
+    }
+
+    return time;
   }
 });

@@ -27,7 +27,7 @@ export default BaseHelper.extend({
       format = params[1];
     }
 
-    let time = this.parseMoment(moment(...args), { locale, timeZone });
+    let time = this.morphMoment(moment(...args), { locale, timeZone });
 
     return time.format(format);
   })

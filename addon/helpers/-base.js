@@ -11,7 +11,7 @@ export default Ember.Helper.extend({
     this.recompute();
   }),
 
-  parseMoment(time, { locale, timeZone }) {
+  morphMoment(time, { locale, timeZone }) {
     locale = locale || this.get('moment.locale');
 
     if (locale) {

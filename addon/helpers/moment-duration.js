@@ -7,7 +7,7 @@ export default BaseHelper.extend({
       throw new TypeError('ember-moment: Invalid Number of arguments, at most 2');
     }
 
-    let time = this.parseMoment(moment.duration(...params), { locale, timeZone });
+    let time = this.morphMoment(moment.duration(...params), { locale, timeZone });
 
     return time.humanize();
   }

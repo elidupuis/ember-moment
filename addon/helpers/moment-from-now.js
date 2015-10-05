@@ -15,7 +15,7 @@ export default BaseHelper.extend({
       this.timer = setTimeout(runBind(this, this.recompute), parseInt(interval, 10));
     }
 
-    let time = this.parseMoment(moment(...params), { locale, timeZone });
+    let time = this.morphMoment(moment(...params), { locale, timeZone });
 
     return time.fromNow(hideSuffix);
   }),
